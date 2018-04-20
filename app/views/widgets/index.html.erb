@@ -1,0 +1,50 @@
+<h1 class="jumbotron text-center">Wacky Widget</h1>
+<h3 class="text-center">No Widgets Exist</h3>
+<table class='text-dark'>
+    <thead>
+        <tr>
+            <th scope="col"> Description </th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @widgetA.each_with_index do |widget|%>
+            <tr>
+                <td>
+                    <%=widget.description%>
+                </td>
+                <td>
+                    <%=widget.quantity%>
+                </td>
+                <td>
+                    <%= link_to link_to 'X', widget_path(widget.id), method: :delete, class: "btn btn-xs btn-danger" %>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
+
+
+
+</table>
+
+<hr>
+
+
+
+<div class="row text-center">
+    <div class="form-signin" style="margin: 0 auto; width: 90%; margin-top: 75px;">
+        <h2 class="mb-3">Add Widget:</h2>
+        <%= form_for @widgetN do |f| %>
+            <div class="field">
+
+                <%= f.text_field :description, class:"form-control text-center mt-5 mb-2 "%>
+            </div>
+            <div class="field">
+
+                <%= f.text_field :quantity, class:"form-control text-center mb-2" %>
+            </div>
+            <div class="actions">
+                <%= f.submit "Submit", class: "btn btn-lg btn-primary btn-block mt-5",style:"margin: 0 auto; width: 40%;"%>
+            </div>
+            <% end %>

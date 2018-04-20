@@ -1,6 +1,9 @@
 <h1 class="jumbotron text-center">Wacky Widget</h1>
-<% if @widgetA %>
+<% if @widgetA.blank? %>
+<h3 class="text-center">No Widgets Exist</h3>
 
+
+<% else %>
 <table class='text-dark'>
     <thead>
         <tr>
@@ -28,8 +31,7 @@
 
 
 </table>
-<% else %>
-<h3 class="text-center">No Widgets Exist</h3>
+
 <% end %>
 <hr>
 

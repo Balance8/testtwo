@@ -1,6 +1,6 @@
 <h1 class="jumbotron text-center">Wacky Widget</h1>
 <h3 class="text-center">No Widgets Exist</h3>
-<table>
+<table class='text-dark'>
     <thead>
         <tr>
             <th scope="col"> Description </th>
@@ -9,19 +9,16 @@
         </tr>
     </thead>
     <tbody>
-        <% @widgets.each_with_index do |user,i|%>
+        <% @widgetA.each_with_index do |widget|%>
             <tr>
-                <th scope="row">
-                    <%= i+1%>
-                </th>
                 <td>
-                    <%=user.description.capitalize%>
+                    <%=widget.description%>
                 </td>
                 <td>
-                    <%=user.quantity.capitalize%>
+                    <%=widget.quantity%>
                 </td>
                 <td>
-                    <%= link_to user.username.capitalize, user_path(user), class:"btn bg-primary text-white text-capitalize"%>
+                    <%= link_to link_to 'X', widget_path(widget.id), method: :delete, class: "btn btn-xs btn-danger" %>
                 </td>
             </tr>
             <% end %>
@@ -38,33 +35,16 @@
 <div class="row text-center">
     <div class="form-signin" style="margin: 0 auto; width: 90%; margin-top: 75px;">
         <h2 class="mb-3">Add Widget:</h2>
-        <%= form_for @widget do |f| %>
+        <%= form_for @widgetN do |f| %>
             <div class="field">
 
-                <%= f.text_field :description, class:"form-control text-center mt-5 mb-2 text-capitalize", placeholder:"First Name"%>
+                <%= f.text_field :description, class:"form-control text-center mt-5 mb-2 "%>
             </div>
             <div class="field">
 
-                <%= f.text_field :quantity, class:"form-control text-center mb-2 text-capitalize", placeholder:"Last Name" %>
+                <%= f.text_field :quantity, class:"form-control text-center mb-2" %>
             </div>
             <div class="actions">
                 <%= f.submit "Submit", class: "btn btn-lg btn-primary btn-block mt-5",style:"margin: 0 auto; width: 40%;"%>
             </div>
             <% end %>
-
-                <!--<h4>Add Widget:</h4>
-
-<%= form_for @widgets do |f| %>
-<div class="field">
-
-    <%= f.text_field :description, class:"form-control" %>
-</div>
-<div class="field">
-
-    <%= f.text_field :quantity, class:"form-control"%>
-</div>
-<div class="actions">
-<%= f.submit "Add Widget", class: "btn btn-success" %>
-</div>
-
-<% end %>
